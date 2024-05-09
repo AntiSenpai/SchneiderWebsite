@@ -1,19 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Willkommen{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Oswald:wght@500&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbar = document.querySelector(".navbar");
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 100) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    });
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const links = document.querySelectorAll(".nav-link");
+        const currentUrl = window.location.href;
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+        links.forEach(link => {
+            if (link.href === currentUrl) {
+                link.classList.add("active");
+            }
+        });
+    });
+    </script>
+    {% endblock %}
+</head>
+{% block navigation %}
+    <div class="top-wrapper">
+    <nav class="navbar">
+    <div class="contact-info">
+        <img class="telephone" src="{{ asset('images/telephone.svg') }}" alt="Telefon">
+        <div>
+            <span class="service-label">24/7 Support:</span>
+            <a href="tel:+491234567890" class="phone-number">+49 1234 567890</a>
+        </div>
+    </div>
+    <div class="navbar-nav nav-left">
+        <a class="nav-link" href="{{ path('app_home') }}">Home</a>
+        <a class="nav-link" href="{{ path('app_service') }}">Über uns</a>
+    </div>
+    <a class="navbar-brand" href="/">
+        <img src="{{ asset('images/mainLogo.svg') }}" alt="Schneider Dachtechnik Logo">
+    </a>
+    <div class="navbar-nav nav-right">
+        <a class="nav-link" href="{{ path('app_service') }}">Dienstleistungen</a>
+        <a class="nav-link" href="{{ path('app_contact_request') }}">Kontakt</a>
+        <a class="button-request" href="{{ path('app_home') }}">Angebot anfordern</a>
+    </div>
+    </nav>
+    </div>
+    <div class="social-media">
+        <a href="https://instagram.com" class="social-icon">
+            <img src="{{ asset('images/instagram.svg') }}" alt="Instagram">
+        </a>
+        <a href="https://facebook.com" class="social-icon">
+            <img src="{{ asset('images/whatsapp.svg') }}" alt="Facebook">
+        </a>
+    </div>
+    </div>
+    {% endblock %}
+    {% block body %}{% endblock %}
+    {% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Dachdeckerei Schneider</p>
+        </div>
+    </footer>
+    {% endblock %}
+
 </html>

@@ -1,0 +1,192 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 130px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    overflow: visible;
+    padding: 0 20px;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Erlaubt das Wachsen, aber mit weiteren Anpassungen */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0 auto; /* Zentriert das Logo mittels automatischer Margin */
+    position: relative; /* Überlagerung über den anderen Elementen */
+    z-index: 1;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav-left {
+    justify-content: flex-end;   
+}
+
+.nav-right {
+    justify-content: flex-start;
+    margin-right: 10px;
+}
+
+
+
+.navbar-brand img {
+    margin-top: 90px;
+    max-height: 300%; /* Passt die Höhe des Logos an die Navbar-Höhe an */
+    width: auto; /* Behält das Seitenverhältnis bei, ohne die Breite festzulegen */
+    object-fit: contain; /* Stellt sicher, dass das gesamte Logo sichtbar ist und sich der Containergröße anpasst */
+}
+
+.nav-link {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s, transform 0.3s ease-in-out;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: x-large;
+}
+
+.nav-link:hover, .nav-link.active {
+    transform: scale(1.05);
+    color: #fa842b; /* Farbänderung beim Hover oder wenn aktiv */
+}
+
+.social-media {
+    display: flex;
+    position: fixed; /* Positionierung festlegen */
+    right: 20px; /* Rechts ausrichten mit einem Abstand von 20px */
+    top: 125px; /* Direkt unter der Navbar positionieren */
+    align-items: center;
+    height: 50px; /* Höhe der Social Media-Leiste */
+    border-radius: 0 0 10px 10px;
+    background-color: #ffffff;
+    z-index: 1040; /* Unter der Navbar, aber über anderen Inhalten */
+}
+
+.social-icon {
+    width: 30px; /* Breite der Icons */
+    height: 30px; /* Höhe der Icons */
+    margin: 0 10px; /* Abstand zwischen den Icons */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Animation für Hover-Effekte */
+}
+
+.social-icon img {
+    width: 100%; /* Volle Breite des Containers nutzen */
+    height: auto; /* Höhe automatisch anpassen */
+    filter: grayscale(100%); /* Schwarz-Weiß Effekt */
+}
+
+.social-icon:hover img {
+    filter: none; /* Farbe beim Hover */
+    transform: scale(1.1); /* Vergrößern beim Hover */
+}
+
+.button-request {
+    padding: 10px 20px;
+    margin-left: 60px;
+    border: 2px solid #fa842b; /* Orange Farbe für den Rand */
+    background-color: transparent; /* Durchsichtiges Hintergrund */
+    color: #fa842b; /* Orange Textfarbe */
+    text-decoration: none;
+    font-family: "Oswald", sans-serif;
+    font-size: large;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border-radius: 5px; /* Leicht abgerundete Ecken */
+}
+
+.button-request:hover {
+    transform: scale(1.05); /* Vergrößert den Button beim Hover */
+    background-color: #fa842b; /* Füllt den Button mit der orangenen Farbe */
+    color: white; /* Ändert die Textfarbe zu Weiß */
+}
+
+.button-request:active {
+    background-color: #cc6a21; /* Dunklerer Orange-Ton beim Klicken */
+}
+
+.footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    overflow-x: hidden;
+    z-index: 1020; /* Stellen Sie sicher, dass der Footer über anderen Inhalten liegt, aber unter der Navbar */
+}
+
+.contact-info {
+    display: flex;
+    align-items: center; /* Zentriert die Elemente vertikal */
+    padding: 10px;
+    z-index: 1001; /* Stellt sicher, dass es über anderen Inhalten erscheint */
+}
+
+.telephone {
+    width: 48px; /* Größe des Logos festlegen */
+    height: 48px;
+    margin-right: 10px;
+    animation: pulse 2s infinite;
+}
+
+/* Pulsier-Animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.service-label, .phone-number {
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1em; /* Größe relativ zur Eltern-Font-Größe */
+    color: #333; /* Stellt die Textfarbe auf dunkelgrau ein */
+}
+
+.phone-number {
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    color: inherit; /* Übernimmt die Textfarbe aus der Umgebung */
+    display: block; /* Sorgt dafür, dass es unter dem Label steht */
+}
+
+
+
+/* Responsive Verhalten */
+@media (max-width: 768px) {
+    .nav-left, .nav-right {
+        display: none; /* Versteckt die Links auf kleinen Bildschirmen */
+    }
+
+    .navbar {
+        justify-content: flex-end; /* Logo nach rechts auf kleinen Bildschirmen */
+    }
+
+    .navbar-brand img {
+        max-height: 50px; /* Kleinere Version des Logos auf kleinen Bildschirmen */
+    }
+}

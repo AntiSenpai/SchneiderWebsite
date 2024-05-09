@@ -1,0 +1,189 @@
+.hero-section {
+    margin-top: 100px;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 110%;
+    object-fit: cover; /* Stellt sicher, dass das Bild den Container voll ausfüllt ohne das Seitenverhältnis zu verzerren */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4); /* Weißer Filter über das Bild */
+    z-index: 1; /* Stellt sicher, dass das Overlay über dem Bild ist */
+}
+
+.hero-text {
+    position: absolute;
+    top: 20px; /* Oben im Container positionieren */
+    left: 20px; /* Links ausrichten */
+    text-align: left;
+    color: #333;
+    z-index: 2;
+}
+
+.text-container {
+    margin-top: 35%;
+    max-width: 600px; /* Maximale Breite festlegen, um die Ausdehnung zu kontrollieren */
+    display: inline-block; /* Hält die Elemente zusammen */
+}
+
+.hero-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 6em; /* Größere Schrift für den Haupttitel */
+    font-weight: bold; /* Macht die Schrift fett */
+    margin-bottom: 0px; /* Minimaler Abstand zum nächsten Text */
+    line-height: 0.1;
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+    letter-spacing: normal; /* Normaler Buchstabenabstand */
+    animation: fadeInSlideIn 1.5s ease-out forwards; /* Fügt eine Einblendanimation hinzu */
+}
+
+.hero-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4.8em; /* Kleinere Schriftgröße für "Dachtechnik" */
+    font-weight: lighter; /* Schmalerer Schriftstil */
+    line-height: 0.9;
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+    display: block; /* Blockelement macht automatische Breitenanpassung */
+    text-transform: uppercase; /* Text in Großbuchstaben für Einheitlichkeit */
+    overflow: hidden; /* Versteckt Überlaufenden Inhalt */
+    text-overflow: ellipsis; /* Fügt Punkte hinzu, wenn Text überläuft */
+    transform: scaleY(0.9); /* Skaliert die Höhe um 90%, um es schmaler zu machen */
+    animation: fadeInSlideInSub 2.5s ease-out forwards;
+}
+
+.service-section {
+    position: relative;
+    background-color: white;
+    transform: skewY(-6deg); /* Leichter Skew-Effekt für den Anfang */
+    transition: transform 0.5s ease-out; /* Weiche Übergänge für die Animation */
+    overflow: hidden; /* Versteckt überflüssige Inhalte, die über die Grenzen hinausgehen */
+    top: -100px;
+    height: 70vh; /* Definiert eine spezifische Höhe für die Sichtbarkeit */
+    text-align: center;
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 1200px; /* Maximale Breite des Containers */
+    margin: 0 auto; /* Zentriert den Container */
+    padding: 0 20px; /* Padding an den Seiten, für kleiner Bildschirme */
+}
+
+.service-grid {
+    display: flex; /* Flex-Container für die Karten */
+    flex-wrap: wrap; /* Erlaubt Umbrüche für kleinere Bildschirme */
+    justify-content: space-around; /* Verteilt die Karten gleichmäßig mit Raum dazwischen */
+    margin-top: 20px; /* Abstand von der Überschrift */
+}
+
+.service-card {
+    background-color: #ffffff; /* Weiße Hintergrundfarbe für Karten */
+    border: 1px solid #e0e0e0; /* Subtile Grenze für jede Karte */
+    width: calc(25% - 40px); /* Berechnet die Breite jeder Karte, 40px ist der Abstand zwischen den Karten */
+    margin: 20px; /* Abstand um jede Karte */
+    padding: 20px; /* Innenabstand in jeder Karte */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Leichter Schatten für 3D-Effekt */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Weiche Animation für Hover-Effekt */
+    cursor: pointer; /* Cursor ändert sich zu einem Zeiger */
+}
+
+.service-section h2 {
+    text-align: left;
+    padding-left: 20px;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideIn 1s forwards;
+    animation-delay: 0.5s;
+}
+
+.service-card img {
+    width: 80px; /* Breite des Icons */
+    height: auto; /* Höhe automatisch basierend auf der Breite */
+    margin-bottom: 15px; /* Abstand unter dem Icon */
+}
+
+.service-card h3 {
+    color: #333; /* Dunkelgraue Schriftfarbe für den Titel */
+    margin-bottom: 10px; /* Abstand unter dem Titel */
+}
+
+.service-card p {
+    color: #666; /* Mittelgraue Schriftfarbe für Beschreibung */
+    font-size: 14px; /* Schriftgröße für die Beschreibung */
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Hebt die Karte an beim Drüberfahren */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Stärkerer Schatten beim Hover */
+}
+
+.button {
+    padding: 10px 20px;
+    border: 2px solid #fa842b; /* Orange Farbe für den Rand */
+    background-color: transparent; /* Durchsichtiges Hintergrund */
+    color: #fa842b; /* Orange Textfarbe */
+    text-decoration: none;
+    font-family: "Oswald", sans-serif;
+    font-size: large;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border-radius: 5px; /* Leicht abgerundete Ecken */
+}
+
+.button:hover {
+    transform: scale(1.05); /* Vergrößert den Button beim Hover */
+    background-color: #fa842b; /* Füllt den Button mit der orangenen Farbe */
+    color: white; /* Ändert die Textfarbe zu Weiß */
+}
+
+.button:active {
+    background-color: #cc6a21; /* Dunklerer Orange-Ton beim Klicken */
+}
+
+@keyframes fadeInSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInSlideInSub {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
