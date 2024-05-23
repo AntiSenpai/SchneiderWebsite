@@ -1,19 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto; /* Statt 100%, um das natürliche Scrolling zu ermöglichen */
+    overflow-x: hidden; /* Verhindert nur horizontales Scrollen */
+    overflow-y: visible; /* Erlaubt vertikales Scrollen */
+}
+
 .hero-section {
-    margin-top: 100px;
     position: relative;
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     overflow: hidden;
+    top: 0; /* Stellt sicher, dass es direkt unter der Navbar startet */
+    z-index: -1; /* Stellt sicher, dass es hinter der Navbar ist */
 }
 
 .hero-image {
     width: 100%;
     height: 110%;
-    object-fit: cover; /* Stellt sicher, dass das Bild den Container voll ausfüllt ohne das Seitenverhältnis zu verzerren */
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -2;
 }
 
 .hero-overlay {
@@ -28,7 +39,7 @@
 
 .hero-text {
     position: absolute;
-    top: 20px; /* Oben im Container positionieren */
+    top: 60px; /* Oben im Container positionieren */
     left: 20px; /* Links ausrichten */
     text-align: left;
     color: #333;
@@ -73,7 +84,7 @@
     transition: transform 0.5s ease-out; /* Weiche Übergänge für die Animation */
     overflow: hidden; /* Versteckt überflüssige Inhalte, die über die Grenzen hinausgehen */
     top: -100px;
-    height: 70vh; /* Definiert eine spezifische Höhe für die Sichtbarkeit */
+    height: 60vh; /* Definiert eine spezifische Höhe für die Sichtbarkeit */
     text-align: center;
     padding: 50px 0;
 }
@@ -81,7 +92,7 @@
 .container {
     max-width: 1200px; /* Maximale Breite des Containers */
     margin: 0 auto; /* Zentriert den Container */
-    padding: 0 20px; /* Padding an den Seiten, für kleiner Bildschirme */
+    padding: 80px 20px; /* Padding an den Seiten, für kleiner Bildschirme */
 }
 
 .service-grid {
@@ -89,37 +100,77 @@
     flex-wrap: wrap; /* Erlaubt Umbrüche für kleinere Bildschirme */
     justify-content: space-around; /* Verteilt die Karten gleichmäßig mit Raum dazwischen */
     margin-top: 20px; /* Abstand von der Überschrift */
+    gap: 20px;
+    justify-content: space-between;
+    align-items: stretch;
 }
+
+.heading-container {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.background-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 6em;
+    color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 0;
+    margin: 0;
+}
+
+.foreground-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    color: #333;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    text-align: left;
+    animation: slideIn 2.5s ease-out forwards;
+}
+
 
 .service-card {
-    background-color: #ffffff; /* Weiße Hintergrundfarbe für Karten */
-    border: 1px solid #e0e0e0; /* Subtile Grenze für jede Karte */
-    width: calc(25% - 40px); /* Berechnet die Breite jeder Karte, 40px ist der Abstand zwischen den Karten */
-    margin: 20px; /* Abstand um jede Karte */
-    padding: 20px; /* Innenabstand in jeder Karte */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Leichter Schatten für 3D-Effekt */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Weiche Animation für Hover-Effekt */
-    cursor: pointer; /* Cursor ändert sich zu einem Zeiger */
+    flex: 1 1 calc(25% - 20px);
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
-.service-section h2 {
-    text-align: left;
-    padding-left: 20px;
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(250, 132, 43, 0.1);
     opacity: 0;
-    transform: translateX(-100%);
-    animation: slideIn 1s forwards;
-    animation-delay: 0.5s;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.service-card:hover::before {
+    opacity: 1;
 }
 
 .service-card img {
-    width: 80px; /* Breite des Icons */
-    height: auto; /* Höhe automatisch basierend auf der Breite */
-    margin-bottom: 15px; /* Abstand unter dem Icon */
-}
-
-.service-card h3 {
-    color: #333; /* Dunkelgraue Schriftfarbe für den Titel */
-    margin-bottom: 10px; /* Abstand unter dem Titel */
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .service-card p {
@@ -147,11 +198,20 @@
 .button:hover {
     transform: scale(1.05); /* Vergrößert den Button beim Hover */
     background-color: #fa842b; /* Füllt den Button mit der orangenen Farbe */
+    cursor: pointer;
     color: white; /* Ändert die Textfarbe zu Weiß */
 }
 
 .button:active {
     background-color: #cc6a21; /* Dunklerer Orange-Ton beim Klicken */
+}
+
+.hr {
+    border-radius: 10px 10px 10px 10px;
+    border: none;
+    height: 3px;
+    margin-top: -50px;
+    background-color: black;
 }
 
 @keyframes fadeInSlideIn {

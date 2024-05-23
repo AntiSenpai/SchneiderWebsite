@@ -2,15 +2,23 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 130px;
+    height: 80px;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 1000;
     overflow: visible;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
     padding: 0 20px;
+}
+
+.navbar.scrolled {
+    background-color: #fff;
 }
 
 .navbar-nav {
@@ -74,13 +82,19 @@
     display: flex;
     position: fixed; /* Positionierung festlegen */
     right: 20px; /* Rechts ausrichten mit einem Abstand von 20px */
-    top: 125px; /* Direkt unter der Navbar positionieren */
+    top: 79px; /* Direkt unter der Navbar positionieren */
     align-items: center;
     height: 50px; /* Höhe der Social Media-Leiste */
     border-radius: 0 0 10px 10px;
-    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
     z-index: 1040; /* Unter der Navbar, aber über anderen Inhalten */
 }
+
+.social-media.scrolled {
+    background-color: #fff;
+}
+
 
 .social-icon {
     width: 30px; /* Breite der Icons */

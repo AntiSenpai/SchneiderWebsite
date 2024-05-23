@@ -24,7 +24,7 @@ class HomeController extends AbstractController
         throw new ErrorException($message, 0, $severity, $file, $line);
     }
 
-    #[Route('/', name: 'app_home')]
+    #[Route('/startseite', name: 'app_home')]
     public function index(): Response
     {
 

@@ -25,22 +25,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("scroll", function() {
     const section = document.querySelector('.service-section');
-    const viewportHeight = window.innerHeight; // Definiere viewportHeight hier
-    const sectionStart = section.offsetTop - viewportHeight;
-    const sectionEnd = sectionStart + section.offsetHeight;
-    const scrollPosition = window.pageYOffset;
+    const viewportHeight = window.innerHeight;
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const scrollPosition = window.pageYOffset + viewportHeight;
 
     let skewValue = 0;
 
-    if (scrollPosition > sectionStart && scrollPosition < sectionEnd) {
-        const distanceIntoSection = scrollPosition - sectionStart;
-        const percentage = Math.min(1, distanceIntoSection / section.offsetHeight);
-        skewValue = 10 - (percentage * 10); // Der Wert '4' ist der maximale Skew-Winkel
-    } else if (scrollPosition <= sectionStart) {
+    if (scrollPosition > sectionTop && scrollPosition < sectionTop + sectionHeight * 0.5) { // Beendet die Skew-Animation früher
+        const distanceIntoSection = scrollPosition - sectionTop;
+        const percentage = Math.min(1, distanceIntoSection / (sectionHeight * 0.5)); // Verwendet nur 50% der Sektionshöhe
+        skewValue = 10 - (percentage * 10);
+    } else if (scrollPosition <= sectionTop) {
         skewValue = 10; // Maximaler Skew-Winkel, wenn oberhalb der Sektion
+    } else {
+        skewValue = 0; // Kein Skew, wenn man weit genug gescrollt hat
     }
 
     section.style.transform = `skewY(-${skewValue}deg)`;
+});
+
+
+document.addEventListener("scroll", function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.pageYOffset > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+document.addEventListener("scroll", function() {
+    const navbar = document.querySelector('.social-media');
+    if (window.pageYOffset > 50) { 
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });
 </script>
 {% endblock %}
@@ -54,37 +74,41 @@ document.addEventListener("scroll", function() {
         <div class="text-container">
             <h1 class="hero-title">SCHNEIDER</h1>
             <h2 class="hero-subtitle">Dachtechnik</h2>
+            <hr class="hr">
         </div>
         </div>
 
 
     </div>
-    <div class="service-section" id="services" style="height:100vh; background-color: white;">
+    <div class="service-section" id="services">
     <div class="container">
-        <h1 style="align: left;">Was bieten wir Ihnen?</h1>
+        <div class="heading-container">
+            <h1 class="background-text">Dienstleistungen</h1>
+            <h2 class="foreground-text">Was bieten wir Ihnen?</h2>
+        </div>
         <div class="service-grid">
-            <div class="service-card" onclick="window.location.href='details.html';">
-                <img src="{{ asset('images/dachdeckerMann.png') }}" alt="Dachreparatur und Notdienst">
-                <h3>Dachreparatur & Notdienst</h3>
-                <p>Professionelle Reparaturarbeiten und schneller Notdienst für Ihr Dach.</p>
+            <div class="service-card" role="button" tabindex="0" onclick="window.location.href='details.html';">
+                <img src="{{ asset('images/reinigung.png') }}" alt="Renovierung">
+                <h3>Renovierung</h3>
+                <p>Professionelle Renovierungsarbeiten mit höchster Qualität und Effizienz.</p>
             </div>
-            <div class="service-card" onclick="window.location.href='details.html';">
-                <img src="{{ asset('images/fenster.png') }}" alt="Fenster- und Fassadenarbeiten">
-                <h3>Fenster- & Fassadenarbeiten</h3>
-                <p>Qualitätsfensterbau und Fassadengestaltung, die Bestand hält.</p>
+            <div class="service-card" role="button" tabindex="0" onclick="window.location.href='details.html';">
+                <img src="{{ asset('images/dachdeckerMann.png') }}" alt="Architektur">
+                <h3>Architektur</h3>
+                <p>Individuelle und innovative Architekturlösungen für moderne Räume.</p>
             </div>
-            <div class="service-card" onclick="window.location.href='details.html';">
-                <img src="{{ asset('images/reinigung.png') }}" alt="Dachreinigung">
-                <h3>Dachreinigung</h3>
-                <p>Effektive Reinigungslösungen für eine längere Lebensdauer Ihres Dachs.</p>
+            <div class="service-card" role="button" tabindex="0" onclick="window.location.href='details.html';">
+                <img src="{{ asset('images/fenster.png') }}" alt="Bauarbeiten">
+                <h3>Bauarbeiten</h3>
+                <p>Zuverlässige und nachhaltige Bauausführung für Ihr nächstes Projekt.</p>
             </div>
-            <div class="service-card" onclick="window.location.href='details.html';">
-                <img src="{{ asset('images/mehr.png') }}" alt="Weitere Dienste">
-                <h3>Weitere Dienste</h3>
-                <p>Entdecken Sie zusätzliche Services, die wir anbieten.</p>
+            <div class="service-card" role="button" tabindex="0" onclick="window.location.href='details.html';">
+                <img src="{{ asset('images/mehr.png') }}" alt="Finanzlösungen">
+                <h3>Finanzlösungen</h3>
+                <p>Effiziente Finanzstrategien und -lösungen, die Ihr Geschäft voranbringen.</p>
             </div>
         </div>
-        <button class="button" onclick="window.location.href='services.html';">Mehr zu unseren Dienstleistungen</button>
+        <button class="button">Alle Dienstleistungen ansehen</button>
     </div>
     </div>
     <div class="contact-section"></div>
