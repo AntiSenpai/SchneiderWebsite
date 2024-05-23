@@ -62,6 +62,11 @@ document.addEventListener("scroll", function() {
         navbar.classList.remove('scrolled');
     }
 });
+document.addEventListener('scroll', function () {
+    const scrolled = window.pageYOffset;
+    const heroImage = document.querySelector('.hero-image');
+    heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
+});
 </script>
 {% endblock %}
 
@@ -76,9 +81,7 @@ document.addEventListener("scroll", function() {
             <h2 class="hero-subtitle">Dachtechnik</h2>
             <hr class="hr">
         </div>
-        </div>
-
-
+    </div>
     </div>
     <div class="service-section" id="services">
     <div class="container">
