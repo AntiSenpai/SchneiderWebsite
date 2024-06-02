@@ -10,9 +10,11 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Oswald:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
     {% endblock %}
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         const navbar = document.querySelector(".navbar");
@@ -53,7 +55,7 @@
     </div>
     <div class="navbar-nav nav-left">
         <a class="nav-link" href="{{ path('app_home') }}">Home</a>
-        <a class="nav-link" href="{{ path('app_service') }}">Über uns</a>
+        <a class="nav-link" href="{{ path('about_us') }}">Über uns</a>
     </div>
     <a class="navbar-brand" href="/">
         <img src="{{ asset('images/mainLogo.svg') }}" alt="Schneider Dachtechnik Logo">

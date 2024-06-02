@@ -1,3 +1,4 @@
+/* General styles */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
 
 html, body {
@@ -9,6 +10,7 @@ html, body {
     overflow-y: visible; /* Erlaubt vertikales Scrollen */
 }
 
+/* Hero section styles */
 .hero-section {
     position: relative;
     width: 100%;
@@ -19,11 +21,10 @@ html, body {
 }
 
 .hero-image {
+    position: absolute;
     width: 100%;
     height: 120vh;
     object-fit: cover;
-    transform: translateZ(-1px) scale(2);
-    position: absolute;
     top: 0;
     left: 0;
     z-index: -2;
@@ -41,7 +42,7 @@ html, body {
 
 .hero-text {
     position: relative;
-    top: 50%; /* Oben im Container positionieren */
+    top: 10%; /* Oben im Container positionieren */
     left: 20px; /* Links ausrichten */
     text-align: left;
     color: #333;
@@ -50,7 +51,7 @@ html, body {
 }
 
 .text-container {
-    margin-top: 35%;
+    margin-top: 20%;
     max-width: 600px; /* Maximale Breite festlegen, um die Ausdehnung zu kontrollieren */
     display: inline-block; /* Hält die Elemente zusammen */
 }
@@ -68,7 +69,7 @@ html, body {
 
 .hero-subtitle {
     font-family: 'Oswald', sans-serif;
-    font-size: 4.8em; /* Kleinere Schriftgröße für "Dachtechnik" */
+    font-size: 5.4em; /* Kleinere Schriftgröße für "Dachtechnik" */
     font-weight: lighter; /* Schmalerer Schriftstil */
     line-height: 0.9;
     white-space: nowrap; /* Verhindert Zeilenumbruch */
@@ -80,24 +81,158 @@ html, body {
     animation: fadeInSlideInSub 2.5s ease-out forwards;
 }
 
-.service-section {
+/* About us section styles */
+.about-us-section {
+    top: -400px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: white;
-    transform: skewY(-6deg); /* Leichter Skew-Effekt für den Anfang */
-    transition: transform 0.5s ease-out; /* Weiche Übergänge für die Animation */
     overflow: hidden; /* Versteckt überflüssige Inhalte, die über die Grenzen hinausgehen */
-    margin-top: -100vh;
+    padding: 50px 20px;
     height: 60vh; /* Definiert eine spezifische Höhe für die Sichtbarkeit */
-    text-align: center;
-    padding: 50px 0;
 }
 
+.about-us-content-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.team-carousel-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+    
+    .carousel {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 10%; /* Macht das Karussell rund */
+        border: 2px solid #fa842b;
+    }
+
+    .carousel:hover {
+        border: 4px solid #fa842b;
+    }
+    
+    .carousel-item {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    .carousel-item.active {
+        opacity: 1;
+    }
+    
+    .carousel-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10%; /* Macht die Bilder rund */
+        transition: filter 0.3s, border 0.3s;
+    }
+    
+    .carousel-item:hover .carousel-image:hover {
+        cursor: pointer;
+    }
+    
+    .carousel-caption {
+        font-family: 'Oswald', sans-serif;
+        text-align: center;
+        margin-top: 10px; /* Abstand nach oben */
+        display: none; /* Versteckt die Beschriftung standardmäßig */
+    }
+    
+    .carousel-item.active .carousel-caption {
+        display: block; /* Zeigt die Beschriftung, wenn das Bild aktiv ist */
+    }
+    
+    .carousel-caption h3 {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+    }
+    
+    .carousel-caption p {
+        font-size: 1.2em;
+        font-style: italic;
+    }
+    
+
+.vertical-line {
+    width: 2px;
+    background-color: #000;
+    height: 100%;
+    margin: 80px 20px;
+}
+
+.about-us-content {
+    flex: 1;
+    margin-left: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.about-us-content h2 {
+    font-size: 3em;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.about-us-content .description {
+    font-size: 1.2em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.parallax-section {
+    position: relative;
+    height: 200px; /* Höhe der Sektion */
+    margin-top: -400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: whitesmoke; /* Textfarbe */
+    padding: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Stil für das Parallax-Hintergrundbild */
+.parallax-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed; /* Parallax-Effekt */
+    background-position: center;
+    filter: brightness(0.5); /* Dunkleres Bild für besseren Kontrast zum Text */
+}
+
+/* Stil für den Inhalt der Parallax-Sektion */
+.parallax-content {
+    position: relative;
+    font-size: 1.3em;
+    z-index: 1; /* Stellt sicher, dass der Inhalt vor dem Hintergrund liegt */
+}
+
+/* Container styles */
 .container {
     max-width: 1200px; /* Maximale Breite des Containers */
     margin: 0 auto; /* Zentriert den Container */
     padding: 80px 20px; /* Padding an den Seiten, für kleiner Bildschirme */
 }
-d
+
+/* Service grid styles */
 .service-grid {
     display: flex; /* Flex-Container für die Karten */
     flex-wrap: wrap; /* Erlaubt Umbrüche für kleinere Bildschirme */
@@ -108,6 +243,7 @@ d
     align-items: stretch;
 }
 
+/* Heading container styles */
 .heading-container {
     position: relative;
     margin-bottom: 40px;
@@ -123,7 +259,7 @@ d
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
-    z-index: 0;
+    z-index: -2;
     margin: 0;
 }
 
@@ -135,56 +271,65 @@ d
     z-index: 1;
     margin: 0;
     text-align: left;
-    animation: slideIn 2.5s ease-out forwards;
 }
 
+
+.service-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    gap: 20px;
+}
 
 .service-card {
     flex: 1 1 calc(25% - 20px);
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(250, 132, 43, 0.3);
+    border-radius: 10px;
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(250, 132, 43, 0.1);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-}
-
-.service-card:hover::before {
-    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
 }
 
 .service-card img {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
+    object-fit: cover;
+}
+
+.service-content {
+    text-align: center;
+}
+
+.service-card h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
 }
 
 .service-card p {
-    color: #666; /* Mittelgraue Schriftfarbe für Beschreibung */
-    font-size: 14px; /* Schriftgröße für die Beschreibung */
+    color: #333;
+    font-size: 1.3em;
+    font-family: 'Oswald', sans-serif;
 }
 
 .service-card:hover {
-    transform: translateY(-10px); /* Hebt die Karte an beim Drüberfahren */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Stärkerer Schatten beim Hover */
+    color: #fa842b;
+    transform: scale(1.05);
 }
+
+.service-card:hover img,
+.service-card:hover p,
+.service-card:hover h3 {
+    color: #fa842b;
+}
+
 
 .button {
     padding: 10px 20px;
@@ -216,6 +361,84 @@ d
     margin-top: -50px;
     background-color: black;
 }
+
+/* Grundstil für die Kontakt-Sektion */
+.contact-section {
+    position: relative;
+    padding: 60px 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+}
+
+/* Stil für den Hintergrund */
+.contact-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dunklerer Overlay für besseren Kontrast */
+    z-index: 0;
+}
+
+/* Stil für den Container */
+.contact-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.9); /* Leicht transparenter weißer Hintergrund */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3em;
+}
+
+/* Stil für die Formularüberschrift */
+.contact-container h2 {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+/* Stil für Formulargruppen */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Stil für Formularlabels */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Stil für Formulareingaben */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(0); }
+    38% { transform: translateX(-100%); }
+    71% { transform: translateX(-100%); }
+    76% { transform: translateX(-200%); }
+    100% { transform: translateX(-200%); }
+}
+
 
 @keyframes fadeInSlideIn {
     from {
